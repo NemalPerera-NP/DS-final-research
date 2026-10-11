@@ -1,0 +1,23 @@
+#!/bin/sh
+set -eu
+
+PYTHON=".venv/Scripts/python.exe"
+
+if [ ! -f "$PYTHON" ]; then
+    echo "Cannot find the project Python environment at $PYTHON" >&2
+    exit 1
+fi
+
+FILES=$(git diff --cached --name-only --diff-filter=ACMR -- '*.ipynb')
+
+if [ -z "$FILES" ]; then
+    exit 0
+fi
+
+echo "Clearing Jupyter notebook outputs before commit..."
+
+for FILE in $FILES; do
+    "$PYTHON" -m nbconvert --clear-output --inplace "$FILE"
+    git add -- "$FILE"
+done
+

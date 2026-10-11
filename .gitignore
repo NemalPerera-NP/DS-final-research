@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.env
+
+# Keep datasets and generated results out of Git.
+/data/
+/models/
+/reports/figures/
+/reports/tables/
+/reports/*_report.*
