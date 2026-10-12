@@ -10,3 +10,4 @@ __pycache__/
 /reports/figures/
 /reports/tables/
 /reports/*_report.*
+/notebooks/experiments/class_imbalance/outputs/
